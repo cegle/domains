@@ -8,9 +8,12 @@
       <div class="contact">
         <div class="email el-tag">
           Mail-to:
-          <a href="mailto:vip.qq.com">{{email}}</a>
+          <a :href="'mailto:'+email">{{email}}</a>
         </div>
-        <div class="qq el-tag">QQ: {{qq}}</div>
+        <div class="qq el-tag">
+          QQ:
+          <a :href="tencentTo + qq">{{qq}}</a>
+        </div>
         <div class="googleVoice el-tag">GoogleVoice: {{googleVoice}}</div>
       </div>
     </div>
@@ -59,6 +62,7 @@ export default {
       subTitle: "",
       email: "",
       qq: "",
+      tencentTo: "tencent://message/?uin=",
       googleVoice: "",
       copyright: "",
       site: "",
