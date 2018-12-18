@@ -71,8 +71,8 @@ module.exports = {
           "sass-loader" // compiles Sass to CSS, using Node Sass by default
         ]
       }, {
-        test: /\.(eot|svg|ttf|woff|woff2)$/,
-        loader: 'file-loader'
+        // test: /\.(eot|svg|ttf|woff|woff2)$/,
+        // loader: 'file-loader'
       }
     ]
   },
