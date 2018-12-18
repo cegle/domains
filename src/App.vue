@@ -1,7 +1,10 @@
 <template>
   <div id="app">
     <div class="header">
-      <div class="title">{{title}}</div>
+      <div class="title">
+        {{title}}
+        <span class="subTitle">{{subTitle}}</span>
+      </div>
       <div class="contact">
         <div class="email el-tag">
           Mail-to:
@@ -19,7 +22,7 @@
         style="width: 100%"
       >
         <el-table-column label="域名列表" prop="name"></el-table-column>
-        <el-table-column label="价格">
+        <el-table-column label="价格(¥)">
           <template slot-scope="scope">
             <el-tag>{{scope.row.price}}</el-tag>
           </template>
@@ -53,6 +56,7 @@ export default {
   data() {
     return {
       title: "",
+      subTitle: "",
       email: "",
       qq: "",
       googleVoice: "",
@@ -73,12 +77,15 @@ export default {
           this.loading = false;
           this.tableData = res.data.list;
           this.title = res.data.title;
+          this.subTitle = res.data.subTitle;
           this.email = res.data.email;
           this.qq = res.data.qq;
           this.googleVoice = res.data.googleVoice;
           this.copyright = res.data.copyright;
           this.site = res.data.site;
         }
+
+        document.title = this.title;
       })
       .catch(err => {
         console.log(err);
@@ -89,12 +96,13 @@ export default {
 
 <style lang="scss" scoped>
 #app {
-  font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB",
-    "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  font-family: "Microsoft YaHei", "Helvetica Neue", Helvetica, "PingFang SC",
+    "Hiragino Sans GB", "微软雅黑", Arial, sans-serif;
   a {
     color: inherit;
     text-decoration: none;
   }
+  min-width: 600px;
   max-width: 860px;
   margin: 0 auto;
   .header {
@@ -103,6 +111,11 @@ export default {
     .title {
       font-size: 32px;
       line-height: 90px;
+      .subTitle {
+        font-size: 18px;
+        color: #222;
+        margin-left: 50px;
+      }
     }
     .contact {
       float: right;
